@@ -51,7 +51,7 @@ class Torch
 
 			#cross bridge and adjust torch and time
 			@torch = 1 #move torch to right
-			@time_left = @time_left - (runner_a + runner_b)
+			@time_left = @time_left - (runner_a + runner_b)#this logic is wrong
 
 			#check for cracked code before going back
 			puts "*******Totals, attemps #{@attemps}, time left #{@time_left} right count #{@right_group.count}"

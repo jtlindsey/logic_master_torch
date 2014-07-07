@@ -13,7 +13,7 @@ class Torch
 	def random_index_pos(left_group)
 		random = 0
 		until left_group.include?(random)
-			random = Random.rand(13)
+			random = Random.rand(1..12)
 		end
 		random
 	end
@@ -21,7 +21,7 @@ class Torch
 	def random_go_back(right_group)
 		random = 0
 		until right_group.include?(random)
-			random = Random.rand(13)
+			random = Random.rand(1..12)
 		end
 		random
 	end

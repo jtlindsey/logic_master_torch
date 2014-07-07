@@ -11,6 +11,7 @@ class Torch
 	end
 
 	def random_index_pos(left_group)
+		srand 12
 		random = 0
 		until left_group.include?(random)
 			random = Random.rand(1..12)
@@ -19,6 +20,7 @@ class Torch
 	end
 
 	def random_go_back(right_group)
+		srand 12
 		random = 0
 		until right_group.include?(random)
 			random = Random.rand(1..12)

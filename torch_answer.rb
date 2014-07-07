@@ -13,7 +13,7 @@ class Torch
 	def random_index_pos(left_group)
 		random = 0
 		until left_group.include?(random)
-			random = rand(13)
+			random = Random.rand(13)
 		end
 		random
 	end
@@ -21,7 +21,7 @@ class Torch
 	def random_go_back(right_group)
 		random = 0
 		until right_group.include?(random)
-			random = rand(13)
+			random = Random.rand(13)
 		end
 		random
 	end
@@ -30,9 +30,9 @@ class Torch
 		while @stop == false
 
 			@attemps += 1
-			# if @attemps >= 10
-			# 	@stop = true
-			# end
+			 if @attemps >= 5000000
+			 	@stop = true
+			 end
 
 			puts "enter loop peoples total #{@left_group.count}, who #{@left_group}"#
 			uz1 = Torch.new
@@ -79,7 +79,7 @@ class Torch
 			if @time_left < 0
 				puts "************************game is resetting*****************"	
 				@time_left = 30 #reset clock
-				@left_group = [1,3,6,8,12] #reset people
+				@left_group = [1,3,6,8,12] #reset people on left
 				@torch = 0 #reset torch position
 				@right_group = []# right group equal zero					
 			end

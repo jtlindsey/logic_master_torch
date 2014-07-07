@@ -3,7 +3,7 @@ class Torch
 
 	def initialize(time_left=30)
 		@time_left = time_left
-		@left_group = [1,3,6,8,12]#[12,8,6,3,1] #[6,1,3,12,8]
+		@left_group = [1,3,6,8,12]
 		@right_group = []
 		@stop = false
 		@attemps = 0

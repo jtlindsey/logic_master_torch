@@ -11,7 +11,6 @@ class Torch
 	end
 
 	def random_index_pos(left_group)
-		#srand 12345
 		random = 0
 		until left_group.include?(random)
 			random = rand(1..12)
@@ -20,7 +19,6 @@ class Torch
 	end
 
 	def random_go_back(right_group)
-		#srand 12345
 		random = 0
 		until right_group.include?(random)
 			random = rand(1..12)
@@ -51,11 +49,9 @@ class Torch
 
 			#cross bridge and adjust torch and time
 			@torch = 1 #move torch to right
-			@time_left = @time_left - (runner_a + runner_b)
+			runner_a > runner_b ? @time_left = @time_left - runner_a : @time_left = @time_left - runner_b
 
 			#check for cracked code before going back
-			puts "*******Totals, attemps #{@attemps}, time left #{@time_left} right count #{@right_group.count}"
-
 			if @time_left >= 0 && @right_group.count == 5
 				puts "Code Cracked!"
 				puts "Attemps before success = #{@attemps}"

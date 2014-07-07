@@ -33,18 +33,16 @@ class Torch
 			 	@stop = true
 			 end
 
-			puts "enter loop peoples total #{@left_group.count}, who #{@left_group}"#
+			puts "enter loop............"
 			uz1 = Torch.new
 			runner_a = uz1.random_index_pos(@left_group)
 			@right_group << runner_a #add to right group totals
 			@left_group.delete(runner_a)
-			puts "1st people array edit new total #{@left_group.count}, who #{@left_group}"#remove...............
 
 			uz2 = Torch.new
 			runner_b = uz2.random_index_pos(@left_group)
 			@right_group << runner_b #add to right group totals
 			@left_group.delete(runner_b)
-			puts "2nd people array edit new total #{@left_group.count}, who #{@left_group}"#remove...............
 
 			#cross bridge and adjust time
 			runner_a > runner_b ? @time_left = @time_left - runner_a : @time_left = @time_left - runner_b
@@ -61,20 +59,18 @@ class Torch
 			end
 
 			if @stop == false
-
-				puts "******runner A #{runner_a}, B #{runner_b}, time left #{@time_left}*****"
-				puts "before edit right group count #{@right_group.count}"#remove...............
-				puts "time left #{@time_left}"#remove...............
+				puts "Runner A #{runner_a}, B #{runner_b} *********"
 
 				uz3 = Torch.new
 				runner_goback = uz3.random_go_back(@right_group)#1 of 2 runners on right go back to left
 				@right_group.delete(runner_goback) #remove from right group totals
 				@left_group << runner_goback #runner go back to group
 				@time_left = @time_left - runner_goback #take runner time off clock
-				puts "*******gobacker******** #{runner_goback}"
+				puts "Gobacker******** #{runner_goback}"
+				puts "People left #{@left_group}"
 
 			if @time_left < 0
-				puts "************************game is resetting*****************"	
+				puts "***************game is resetting***************"	
 				@time_left = 30 #reset clock
 				@left_group = [1,3,6,8,12] #reset people on left
 				@right_group = []# right group equal zero					

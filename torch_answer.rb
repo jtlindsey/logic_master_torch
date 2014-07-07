@@ -1,10 +1,9 @@
 class Torch
-	attr_accessor :time_left, :left_group, :torch, :right_group
+	attr_accessor :time_left, :left_group, :right_group
 
 	def initialize(time_left=30)
 		@time_left = time_left
 		@left_group = [1,3,6,8,12]#[12,8,6,3,1] #[6,1,3,12,8]
-		@torch = 0
 		@right_group = []
 		@stop = false
 		@attemps = 0
@@ -47,16 +46,17 @@ class Torch
 			@left_group.delete(runner_b)
 			puts "2nd people array edit new total #{@left_group.count}, who #{@left_group}"#remove...............
 
-			#cross bridge and adjust torch and time
-			@torch = 1 #move torch to right
+			#cross bridge and adjust time
 			runner_a > runner_b ? @time_left = @time_left - runner_a : @time_left = @time_left - runner_b
 
 			#check for cracked code before going back
 			if @time_left >= 0 && @right_group.count == 5
+				puts "*******************"
 				puts "Code Cracked!"
 				puts "Attemps before success = #{@attemps}"
 				puts "People array #{@left_group.count}"
 				puts "People in right group #{@right_group.count}, time left #{@time_left}"
+				puts "*******************"
 				@stop = true
 			end
 
@@ -70,7 +70,6 @@ class Torch
 				runner_goback = uz3.random_go_back(@right_group)#1 of 2 runners on right go back to left
 				@right_group.delete(runner_goback) #remove from right group totals
 				@left_group << runner_goback #runner go back to group
-				torch = 0 #move torch to left
 				@time_left = @time_left - runner_goback #take runner time off clock
 				puts "*******gobacker******** #{runner_goback}"
 
@@ -78,7 +77,6 @@ class Torch
 				puts "************************game is resetting*****************"	
 				@time_left = 30 #reset clock
 				@left_group = [1,3,6,8,12] #reset people on left
-				@torch = 0 #reset torch position
 				@right_group = []# right group equal zero					
 			end
 

@@ -11,19 +11,17 @@ class Torch
 	end
 
 	def random_index_pos(people)
-		x = Random.new
 		random = 0
 		until people.include?(random)
-			random = x.rand(13)
+			random = rand(13)
 		end
 		random
 	end
 
 	def random_go_back(right_group)
-		x = Random.new
 		random = 0
 		until right_group.include?(random)
-			random = x.rand(13)
+			random = rand(13)
 		end
 		random
 	end
@@ -31,7 +29,7 @@ class Torch
 	def pairs
 		while @stop == false
 
-			# @attemps += 1
+			@attemps += 1
 			# if @attemps >= 10
 			# 	@stop = true
 			# end
@@ -54,7 +52,7 @@ class Torch
 			@time_left = @time_left - (runner_a + runner_b)
 
 			#check for cracked code before going back
-			puts "*******Totals, time left #{@time_left} right count #{@right_group.count}"
+			puts "*******Totals, attemps #{@attemps}, time left #{@time_left} right count #{@right_group.count}"
 
 			if @time_left >= 0 && @right_group.count == 5
 				puts "Code Cracked!"

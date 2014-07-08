@@ -6,7 +6,7 @@ class Torch
 		@left_group = [1,3,6,8,12]
 		@right_group = []
 		@stop = false
-		@attemps = 0
+		@attemps = 1
 	end
 
 	def random_index_pos(left_group)
@@ -28,11 +28,6 @@ class Torch
 	def pairs
 		while @stop == false
 
-			@attemps += 1
-			 if @attemps >= 5000000
-			 	@stop = true
-			 end
-
 			puts "enter loop............"
 			uz1 = Torch.new
 			runner_a = uz1.random_index_pos(@left_group)
@@ -51,7 +46,7 @@ class Torch
 			if @time_left >= 0 && @right_group.count == 5
 				puts "*******************"
 				puts "Code Cracked!"
-				puts "Attemps before success = #{@attemps}"
+				puts "Total attemps = #{@attemps}"
 				puts "People array #{@left_group.count}"
 				puts "People in right group #{@right_group.count}, time left #{@time_left}"
 				puts "*******************"
@@ -60,7 +55,6 @@ class Torch
 
 			if @stop == false
 				puts "Runner A #{runner_a}, B #{runner_b} *********"
-
 				uz3 = Torch.new
 				runner_goback = uz3.random_go_back(@right_group)#1 of 2 runners on right go back to left
 				@right_group.delete(runner_goback) #remove from right group totals
@@ -70,7 +64,8 @@ class Torch
 				puts "People left #{@left_group}"
 
 			if @time_left < 0
-				puts "***************game is resetting***************"	
+				puts "***************game is resetting***************"
+				@attemps += 1 #count attemps to solve level	
 				@time_left = 30 #reset clock
 				@left_group = [1,3,6,8,12] #reset people on left
 				@right_group = []# right group equal zero					

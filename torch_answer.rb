@@ -1,12 +1,11 @@
 class Torch
-	attr_accessor :time_left, :left_group, :right_group
 
-	def initialize(time_left=30)
-		@time_left = time_left
+	def initialize
 		@left_group = [1,3,6,8,12]
 		@right_group = []
 		@stop = false
 		@attemps = 1
+		@time_left = 30
 	end
 
 	def random_index_pos(left_group)
@@ -28,7 +27,6 @@ class Torch
 	def pairs
 		while @stop == false
 
-			puts "enter loop............"
 			uz1 = Torch.new
 			runner_a = uz1.random_index_pos(@left_group)
 			@right_group << runner_a #add to right group totals
@@ -54,13 +52,13 @@ class Torch
 			end
 
 			if @stop == false
-				puts "Runner A #{runner_a}, B #{runner_b} *********"
+				puts "Runner**** #{runner_a}, #{runner_b}"
 				uz3 = Torch.new
 				runner_goback = uz3.random_go_back(@right_group)#1 of 2 runners on right go back to left
 				@right_group.delete(runner_goback) #remove from right group totals
 				@left_group << runner_goback #runner go back to group
 				@time_left = @time_left - runner_goback #take runner time off clock
-				puts "Gobacker******** #{runner_goback}"
+				puts "Gobacker**** #{runner_goback}"
 				puts "People left #{@left_group}"
 
 			if @time_left < 0

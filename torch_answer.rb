@@ -75,7 +75,8 @@ class Torch
 end
 
 
-	puts "Hello, press x to start, or any other key to exit"
+	puts "Hello, Welcome to the logic master 'Torch Level' solver."
+	puts "Press x to start, or any other key to exit."
 	response = gets.chomp
 
 	case response
